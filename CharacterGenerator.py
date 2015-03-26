@@ -2,8 +2,6 @@ import random
 import sys
 import os
 
-
-
 # GLOBAL VARIABLES
 max_hench = 0
 loyalty = 0
@@ -302,14 +300,7 @@ def charisma(race):
         print("Charisma: \t\t{}\tMax Henchmen".format(char, max_hench))
     else:
         print("Charisma: \t\t{}".format(char))
-
-
-'''
-# WEAPON PROFICIENCY FUNCTION
-def weapon_proficiency(char_class, level):
-    if char_class == 1:
-        if level <
-'''
+s
 
 # FUNCTION THAT GENERATES A CHARACTER =========================================================
 def character_stat_generator(choice, who, alignment, level, race):
