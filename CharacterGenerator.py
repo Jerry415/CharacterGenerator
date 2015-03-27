@@ -24,7 +24,7 @@ def die(side):
     return die_roll
 
 
-# STAT GENERATOR. REROLLS 1'S, 2'S AND 3'S ======================================================
+# STAT GENERATOR. REROLLS 1'S, 2'S AND 3'S =====================================
 def stat():
     total = 0
     stop = 0
@@ -37,7 +37,7 @@ def stat():
     return total
 
 
-# ROLLS STRENGTH STAT AND CHECKS FOR FIGHTER STRENGTH BONUSES ====================================
+# ROLLS STRENGTH STAT AND CHECKS FOR FIGHTER STRENGTH BONUSES ==================
 def strength(modi, race):
     str_hit = str_dam = eighteen = 0
     strength = stat()
@@ -92,7 +92,7 @@ def strength(modi, race):
         print("Strength: \t\t{}".format(strength))
 
 
-# ROLLS DEXTERITY AND CHECKS FOR BONUSES =======================================================
+# ROLLS DEXTERITY AND CHECKS FOR BONUSES =======================================
 def dexterity(modi, race):
     dext = stat()
 
@@ -140,7 +140,7 @@ def dexterity(modi, race):
     return ac_mod
 
 
-# ROLLS INTELLIGENCE AND CHECKS FOR BONUSES ===================================================
+# ROLLS INTELLIGENCE AND CHECKS FOR BONUSES ====================================
 def intelligence(modi, race):
     learn_spell = 0
     lang = 0
@@ -189,7 +189,7 @@ def intelligence(modi, race):
         print("Intelligence: \t{}\tLanguages {}".format(intell, lang))
 
 
-# ROLLS THE WISDOM STAT AND CHECKS FOR BONUSES =========================================
+# ROLLS THE WISDOM STAT AND CHECKS FOR BONUSES =================================
 def wisdom(modi, race):
     wisd = stat()
 
@@ -227,7 +227,7 @@ def wisdom(modi, race):
         print("Wisdom: \t\t{}".format(wisd,))
 
 
-# ROLLS THE CONSTITUTION STAT ====================================================================
+# ROLLS THE CONSTITUTION STAT ==================================================
 def constitution(modi, race):
     const = stat()
 
@@ -257,7 +257,7 @@ def constitution(modi, race):
         print("Constitution: \t{}".format(const))
     return bonus_HP
 
-# ROLLS FOR CHARISMA AND CHECKS FOR BONUSES. =====================================================
+# ROLLS FOR CHARISMA AND CHECKS FOR BONUSES. ===================================
 def charisma(race):
     char = stat()
 
@@ -311,7 +311,7 @@ def weapon_proficiency(char_class, level):
         if level <
 '''
 
-# FUNCTION THAT GENERATES A CHARACTER =========================================================
+# FUNCTION THAT GENERATES A CHARACTER ==========================================
 def character_stat_generator(choice, who, alignment, level, race):
     print ("\n\nCharacter Name:", who)
 
@@ -456,7 +456,7 @@ def character_stat_generator(choice, who, alignment, level, race):
 
 
 '''
-THE START OF CHARACTER GENERATING!!! =======================================================================
+THE START OF CHARACTER GENERATING!!! ===========================================
 '''
 # GIVES THE CHARACTER A NAME.
 name = input("What is this character's name? ")
