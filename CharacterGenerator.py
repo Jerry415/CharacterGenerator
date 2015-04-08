@@ -1,6 +1,6 @@
 '''ORIGINAL VERSION'''
 
-
+''' Last Update: 4/7/2015'''
 
 import random
 import sys
@@ -18,6 +18,7 @@ spell_def = 0
 spell_bon = 0
 cha_reaction = 0
 bonus_HP = 0
+hit_points = 0
 
 
 # DIE SIMULATOR FOR ANY SIDED DIE -- EVEN ODD DIES, D3, D5, ECT.
@@ -44,6 +45,7 @@ def strength(modi, race):
     str_hit = str_dam = eighteen = 0
     strength = stat()
 
+    # IF THE CHARACTER IS A HALFLING, REDUCE STRENGTH BY 1.
     if race == 4:
         strength -= 1
 
@@ -84,26 +86,25 @@ def strength(modi, race):
 
     # PRINTS THE STRENGTH RESULTS ON THE CONSOLE
     if modi == 1 and strength == 18:
-        print("Strength: \t\t{}/{}\tHit +{}, Dam +{}"
+        print("Strength: \t{}/{}\tHit +{}, Dam +{}"
               .format(strength, eighteen,str_hit, str_dam))
     elif 17 <= strength <= 18:
-        print("Strength: \t\t{}\tHit +{}, Dam +{}".format(strength, str_hit, str_dam))
+        print("Strength: \t{}\tHit +{}, Dam +{}".format(strength, str_hit, str_dam))
     elif strength == 16:
-        print("Strength: \t\t{}\tDam +{}".format(strength, str_dam))
+        print("Strength: \t{}\tDam +{}".format(strength, str_dam))
     else:
-        print("Strength: \t\t{}".format(strength))
+        print("Strength: \t{}".format(strength))
 
 
 # ROLLS DEXTERITY AND CHECKS FOR BONUSES =======================================
 def dexterity(modi, race):
     dext = stat()
 
-    # CHECKS TO SEE IF CLASS MINIMUM REQUIREMENT IS MET.  IF NOT, SETS
-    # THE STAT TO THE MINIMUM REQUIREMENT.
-
-    if (race == 2 or race == 5) and dext < 18:
+    # IF THE RACE IS AN ELF OR A HALFLING, ADD 1 TO DEXTERITY.
+    if (race == 2 or race == 4) and dext < 18:
         dext += 1
 
+    # IF THE CLASS IS A RANGER AND DEXTERITY IS LOWER THAN 13, SET DEXTERITY TO 13.
     if modi == 2:
         if dext < 13:
             dext = 13
@@ -131,13 +132,13 @@ def dexterity(modi, race):
 
     # PRINTS DEXTERITY BONUS RESULTS
     if 16 <= dext <= 18:
-        print("Dexterity: \t\t{}\tInitiative: +{}, Missile Weapon +{}, AC Adjustment -{}"
+        print("Dexterity: \t{}\tInitiative: +{}, Missile Weapon +{}, AC Adjustment -{}"
               .format(dext, dex_react, mis_att, ac_mod))
     elif dext == 15:
-        print("Dexterity: \t\t{}\tAC Adjustment -{}"
+        print("Dexterity: \t{}\tAC Adjustment -{}"
               .format(dext, ac_mod))
     else:
-        print("Dexterity: \t\t{}".format(dext))
+        print("Dexterity: \t{}".format(dext))
 
     return ac_mod
 
@@ -148,6 +149,7 @@ def intelligence(modi, race):
     lang = 0
     intell = stat()
 
+    # IF THE RACE IS A GNOME, AND 1 TO INTELLIGENCE.
     if race == 3 and intell < 18:
         intell += 1
 
@@ -195,9 +197,11 @@ def intelligence(modi, race):
 def wisdom(modi, race):
     wisd = stat()
 
-    if race == 5:
+    # IF RACE IS HALFLING, SUBTRACT 1 FROM WISDOM.
+    if race == 4:
         wisd -= 1
 
+    # IF CLASS IS RANGER AND WISDOM IS BELOW 14, SET WISDOM TO 14.
     if modi == 2:
         if wisd < 14:
             wisd =14
@@ -218,26 +222,28 @@ def wisdom(modi, race):
         spell_bon = 1
 
     if modi == 3 and (15 <= wisd <= 18):
-        print("Wisdom: \t\t{}\tMagic Defense +{}, Bonus Spell Level {}"
+        print("Wisdom: \t{}\tMagic Defense +{}, Bonus Spell Level {}"
               .format(wisd, spell_def, spell_bon))
     elif modi == 3 and (13 <= wisd <= 14):
-        print("Wisdom: \t\t{}\tBonus Spell Level {}"
+        print("Wisdom: \t{}\tBonus Spell Level {}"
               .format(wisd, spell_bon))
     elif 15 <= wisd <= 18:
-        print("Wisdom: \t\t{}\tMagic Defense {}".format(wisd, spell_def))
+        print("Wisdom: \t{}\tMagic Defense {}".format(wisd, spell_def))
     else:
-        print("Wisdom: \t\t{}".format(wisd,))
+        print("Wisdom: \t{}".format(wisd,))
 
 
 # ROLLS THE CONSTITUTION STAT ==================================================
 def constitution(modi, race):
     const = stat()
 
+    # IF RACE IS DWARF, ADD 1 TO CONSTITUTION.
     if race == 1 and const < 18:
         const += 1
     elif race == 2:
         const -= 1
 
+    # IF CLASS IS RANGER AND CONSTITUTION IS BELOW 14, SET CONSTITUTION TO 14.
     if modi == 2:
         if const < 14:
             const = 14
@@ -263,6 +269,7 @@ def constitution(modi, race):
 def charisma(race):
     char = stat()
 
+    # IF RACE IS DWARF, SUBTRACT 1 FROM CHARISMA.
     if race == 1:
         char -= 1
 
@@ -295,16 +302,15 @@ def charisma(race):
         max_hench = 4
 
     if 14 <= char <= 18:
-        print("Charisma: \t\t{}\tMax Henchmen {}, Loyalty Base +{}, Reaction Adjustment +{}"
+        print("Charisma: \t{}\tMax Henchmen {}, Loyalty Base +{}, Reaction Adjustment +{}"
               .format(char, max_hench, loyalty, cha_reaction))
     elif char == 13:
-        print("Charisma: \t\t{}\tMax Henchmen {}, Reaction Adjustment +{}"
+        print("Charisma: \t{}\tMax Henchmen {}, Reaction Adjustment +{}"
               .format(char, max_hench, cha_reaction))
     elif char == 12:
-        print("Charisma: \t\t{}\tMax Henchmen".format(char, max_hench))
+        print("Charisma: \t{}\tMax Henchmen".format(char, max_hench))
     else:
-        print("Charisma: \t\t{}".format(char))
-s
+        print("Charisma: \t{}".format(char))
 
 # FUNCTION THAT GENERATES A CHARACTER ==========================================
 def character_stat_generator(choice, who, alignment, level, race):
@@ -446,6 +452,8 @@ def character_stat_generator(choice, who, alignment, level, race):
 
     print("\nHit Points: {}".format(hit_points))
     print("Armor Class: {}".format(armor_class))
+    print("\n\n")
+
 
 
 
@@ -463,14 +471,13 @@ name = input("What is this character's name? ")
 class_choice = int(input("Choose a character class: \n "
                          "\t1) Figher\n \t2) Ranger\n \t3) Cleric\n "
                          "\t4) Thief\n\t5) Magic User\n"))
-while 1 > class_choice or class_choice > 5 or str(class_choice):
-    print("Please enter a number from 1 to 5.")
+while class_choice < 1 or class_choice > 5:
+    print("Please enter a number between 1 and 5.")
     class_choice = int(input("Choose a character class: \n "
                          "\t1) Figher\n \t2) Ranger\n \t3) Cleric\n "
                          "\t4) Thief\n\t5) Magic User\n"))
 
 # PROMPTS USER TO CHOSE AN ALIGNMENT FOR THE CHARACTER.
-
 if class_choice == 2:
     align = int(input("\nAlignment? \n \t1) Lawful Good\n \t2) Neutral Good\n \t3) Chaotic Good\n"))
     while align < 1 or align > 3:
@@ -507,12 +514,12 @@ if class_choice == 2:
 else:
     race = int(input("Choose a race: \n"
                  "\t1) Dwarf\n \t2) Elf\n \t3) Gnome\n"
-                 "\t4) Human\n \t5) Halfling\n"))
+                 "\t4) Halfling\n \t5) Human\n"))
     while race < 1 or race > 5:
         print("Chose a number between 1 and 5.")
         race = int(input("Choose a race: \n"
                  "\t1) Dwarf\n \t2) Elf\n \t3) Gnome\n"
                  "\t4) Halfling\n \t5) Human\n"))
 
-# FUCNTION CALL TO GENERATE THE NPC.
+# FUNCTION CALL TO GENERATE THE NPC.
 character_stat_generator(class_choice, name, align, level, race)
