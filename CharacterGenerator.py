@@ -1,6 +1,7 @@
 '''ORIGINAL VERSION'''
 
-''' Last Update: 4/7/2015'''
+''' Last Update: 4/7/2015 -- Added comments to parts of the script. '''
+''' Hopefully the changes will show up in GitHub. '''
 
 import random
 import sys
@@ -240,6 +241,7 @@ def constitution(modi, race):
     # IF RACE IS DWARF, ADD 1 TO CONSTITUTION.
     if race == 1 and const < 18:
         const += 1
+    # IF RACE IS ELF, SUBTRACT 1 FROM CONSTITUTION.
     elif race == 2:
         const -= 1
 
