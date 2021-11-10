@@ -6,7 +6,7 @@
 import random
 import sys
 import os
-import datatime
+import datetime
 
 
 # GLOBAL VARIABLES
